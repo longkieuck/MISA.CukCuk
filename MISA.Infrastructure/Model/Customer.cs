@@ -8,7 +8,7 @@ namespace MISA.Infrastructure.Model
     /// <summary>
     /// Thông tin khách khách
     /// </summary>
-    /// CreatedBy: KDLong
+    /// CreatedBy: KDLong 20/04/2021
     public class Customer
     {
         /// <summary>
@@ -28,7 +28,7 @@ namespace MISA.Infrastructure.Model
         public DateTime DateOfBirth { get; set; }
         public int? Gender { get; set; }
         public string MemberCardCode { get; set; }
-        public Guid? CustomerGroupId { get; set; }
+        public Guid? customerGroupId { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public string CompanyName { get; set; }

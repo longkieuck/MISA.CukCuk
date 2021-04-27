@@ -50,7 +50,9 @@ namespace MISA.CukCuk.Api.Controllers
         /// HttpStatus code 200 - Thành công
         /// HttpStatus code 204 - Không có dữ liệu trả về
         /// </returns>
+        /// CreatedBy KDLong 27/04/2021
         // GET api/<CustomerController>/5
+
         [HttpGet("{customerId}")]
         public IActionResult Get(Guid customerId)
         {
@@ -62,7 +64,15 @@ namespace MISA.CukCuk.Api.Controllers
             }
             return NoContent();
         }
-
+        /// <summary>
+        /// Thêm mới 1 khách hàng
+        /// </summary>
+        /// <param name="customer">Dữ liệu khách hàng cần thêm mới</param>
+        /// <returns>
+        /// HttpStatus code 201 - Thêm thành công
+        /// HttpStatus code 204 - Thêm thất bại
+        /// </returns>
+        /// CreatedBy KDLong 27/04/2021
         // POST api/<CustomerController>
         [HttpPost]
         public IActionResult Post([FromBody] Customer customer)
@@ -74,7 +84,15 @@ namespace MISA.CukCuk.Api.Controllers
             }
             return NoContent();
         }
-
+        /// <summary>
+        /// Sửa thông tin 1 khách hàng
+        /// </summary>
+        /// <param name="customer">Dữ liệu khách hàng cần cập nhật</param>
+        /// <returns>
+        /// HttpStatus code 200 - Sửa thành công
+        /// HttpStatus code 204 - Sửa thất bại
+        /// </returns>
+        /// CreatedBy KDLong 27/04/2021
         // PUT api/<CustomerController>/5
         [HttpPut("{CustomerId}")]
         public IActionResult Put([FromBody] Customer customer)
@@ -88,7 +106,15 @@ namespace MISA.CukCuk.Api.Controllers
             }
             return NoContent();
         }
-
+        /// <summary>
+        /// Xóa thông tin 1 khách hàng
+        /// </summary>
+        /// <param name="customerId">Id khách hàng cần xóa</param>
+        /// <returns>
+        /// HttpStatus code 200 - Xóa thành công
+        /// HttpStatus code 204 - Xóa thất bại
+        /// </returns>
+        /// CreatedBy KDLong 27/04/2021
         // DELETE api/<CustomerController>/5
 
         [HttpDelete("{customerId}")]
