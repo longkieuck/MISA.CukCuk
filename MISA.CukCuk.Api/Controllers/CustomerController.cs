@@ -127,5 +127,23 @@ namespace MISA.CukCuk.Api.Controllers
             }
             return NoContent();
         }
+        /// <summary>
+        /// Filter
+        /// </summary>
+        /// <param name="customerFilter"></param>
+        /// <returns></returns>
+        [HttpGet("Filter")]
+        public IActionResult GetCustomers([FromQuery] CustomerFilter customerFilter)
+        {
+            var pagging = _customerService.GetCustomers(customerFilter);
+
+            // Xử lý kết quả trả về cho client.
+            if (pagging.Data.Any())
+            {
+                return Ok(pagging);
+            }
+
+            return NoContent();
+        }
     }
 }

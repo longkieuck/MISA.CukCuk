@@ -9,6 +9,6 @@ namespace MISA.Core.Interface
 {
     public interface ICustomerService : IBaseService<Customer>
     {
-
+        public Pagging<Customer> GetCustomers(CustomerFilter customerFilter);
     }
 }

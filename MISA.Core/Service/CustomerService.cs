@@ -17,5 +17,11 @@ namespace MISA.Core.Service
         {
             _customerRepository = customerRepository;
         }
+
+        public Pagging<Customer> GetCustomers(CustomerFilter customerFilter)
+        {
+            var pagging = _customerRepository.GetCustomers(customerFilter);
+            return pagging;
+        }
     }
 }

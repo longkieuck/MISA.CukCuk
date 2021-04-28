@@ -11,5 +11,7 @@ namespace MISA.Infrastructure.Interface
     {
         public bool CheckCustomerCodeExist(string customerCode);
         public bool CheckPhoneNumberExist(string customerCode);
+
+        public Pagging<Customer> GetCustomers(CustomerFilter customerFilter);
     }
 }

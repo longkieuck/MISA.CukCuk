@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MISA.Infrastructure.Model
+{
+    /// <summary>
+    /// Dữ liệu phân trang
+    /// </summary>
+    /// Created by KDLong 28/04/2021
+    public class Pagging<T>
+    {
+        /// <summary>
+        /// Tổng số bản ghi
+        /// </summary>
+        public int TotalRecords { get; set; }
+        /// <summary>
+        /// Tổng số trang
+        /// </summary>
+        public int TotalPages { get; set; }
+        /// <summary>
+        /// Dữ liệu
+        /// </summary>
+        public IEnumerable<T> Data { get; set; }
+        /// <summary>
+        /// Trang hiện tại
+        /// </summary>
+        public int PageIndex { get; set; }
+        /// <summary>
+        /// Số bản ghi trong 1 trang
+        /// </summary>
+        public int PageSize { get; set; }
+    }
+}
