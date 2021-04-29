@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MISA.Infrastructure.Interface
+namespace MISA.Core.Interface.Repository
 {
     public interface IBaseRepository<MISAEntity> where MISAEntity : class
     {

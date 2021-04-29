@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MISA.Core.Interface;
-using MISA.Infrastructure.Model;
+using MISA.Core.Interface.Service;
+using MISA.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MISA.Core.Interface
+namespace MISA.Core.Interface.Service
 {
     public interface IBaseService<MISAEntity>
     {

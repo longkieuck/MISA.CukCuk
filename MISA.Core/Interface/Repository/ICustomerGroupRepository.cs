@@ -1,6 +1,6 @@
-﻿using MISA.Infrastructure.Model;
+﻿using MISA.Core.Entities;
 
-namespace MISA.Infrastructure.Interface
+namespace MISA.Core.Interface.Repository
 {
     public interface ICustomerGroupRepository : IBaseRepository<CustomerGroup>
     {

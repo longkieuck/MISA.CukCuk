@@ -10,3 +10,6 @@ C:\Users\kdlong\Desktop\Project\MISA.CukCuk\MISA.Infrastructure\obj\Debug\net5.0
 C:\Users\kdlong\Desktop\Project\MISA.CukCuk\MISA.Infrastructure\obj\Debug\net5.0\MISA.Infrastructure.dll
 C:\Users\kdlong\Desktop\Project\MISA.CukCuk\MISA.Infrastructure\obj\Debug\net5.0\ref\MISA.Infrastructure.dll
 C:\Users\kdlong\Desktop\Project\MISA.CukCuk\MISA.Infrastructure\obj\Debug\net5.0\MISA.Infrastructure.pdb
+C:\Users\kdlong\Desktop\Project\MISA.CukCuk\MISA.Infrastructure\bin\Debug\net5.0\MISA.Core.dll
+C:\Users\kdlong\Desktop\Project\MISA.CukCuk\MISA.Infrastructure\bin\Debug\net5.0\MISA.Core.pdb
+C:\Users\kdlong\Desktop\Project\MISA.CukCuk\MISA.Infrastructure\obj\Debug\net5.0\MISA.Infrastructure.csproj.CopyComplete

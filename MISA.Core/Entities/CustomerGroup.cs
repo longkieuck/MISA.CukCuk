@@ -1,10 +1,11 @@
-﻿using System;
+﻿using MISA.Core.AttributeCustom;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MISA.Infrastructure.Model
+namespace MISA.Core.Entities
 {
     /// <summary>
     /// Thông tin nhóm khách hàng
@@ -13,6 +14,7 @@ namespace MISA.Infrastructure.Model
     public class CustomerGroup
     {
         public Guid customerGroupId { get; set; }
+        [MISARequired]
         public string CustomerGroupName { get; set; }
         public string Description { get; set; }
         public DateTime? CreateDate { get; set; }

@@ -27,11 +27,7 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
-            "projectReferences": {
-              "C:\\Users\\kdlong\\Desktop\\Project\\MISA.CukCuk\\MISA.Infrastructure\\MISA.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\kdlong\\Desktop\\Project\\MISA.CukCuk\\MISA.Infrastructure\\MISA.Infrastructure.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {
@@ -88,6 +84,9 @@
             "projectReferences": {
               "C:\\Users\\kdlong\\Desktop\\Project\\MISA.CukCuk\\MISA.Core\\MISA.Core.csproj": {
                 "projectPath": "C:\\Users\\kdlong\\Desktop\\Project\\MISA.CukCuk\\MISA.Core\\MISA.Core.csproj"
+              },
+              "C:\\Users\\kdlong\\Desktop\\Project\\MISA.CukCuk\\MISA.Infrastructure\\MISA.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\kdlong\\Desktop\\Project\\MISA.CukCuk\\MISA.Infrastructure\\MISA.Infrastructure.csproj"
               }
             }
           }
@@ -152,7 +151,11 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\kdlong\\Desktop\\Project\\MISA.CukCuk\\MISA.Core\\MISA.Core.csproj": {
+                "projectPath": "C:\\Users\\kdlong\\Desktop\\Project\\MISA.CukCuk\\MISA.Core\\MISA.Core.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

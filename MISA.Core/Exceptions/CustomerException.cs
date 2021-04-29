@@ -17,19 +17,6 @@ namespace MISA.Core.Exceptions
         {
 
         }
-        public static void CheckCustomerCodeEmpty(string customerCode)
-        {
-            if (string.IsNullOrEmpty(customerCode))
-            {
-                var response = new
-                {
-                    userMsg = "Mã khách hàng không được phép để chống ",
-                    devMsg = "Mã khách hàng không được phép để trống",
-                    MISACode = "001"
-                };
-                throw new CustomerException("Mã khách hàng không được để chống !!!");
-            }
-        }
 
     }
 }

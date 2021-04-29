@@ -7,14 +7,15 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using MISA.Core.Interface;
+using MISA.Core.Interface.Service;
 using MISA.Core.Service;
-using MISA.Infrastructure.Interface;
+using MISA.Core.Interface.Repository;
 using MISA.Infrastructure.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MISA.CukCuk.Api.Middware;
 
 namespace MISA.CukCuk.Api
 {
@@ -52,6 +53,7 @@ namespace MISA.CukCuk.Api
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MISA.CukCuk.Api v1"));
             }
+            app.UseMiddleware(typeof(ErrorHandlingMiddleware));
 
             app.UseHttpsRedirection();
 

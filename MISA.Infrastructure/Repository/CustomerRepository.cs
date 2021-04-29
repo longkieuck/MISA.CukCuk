@@ -1,6 +1,6 @@
 ﻿using Dapper;
-using MISA.Infrastructure.Interface;
-using MISA.Infrastructure.Model;
+using MISA.Core.Interface.Repository;
+using MISA.Core.Entities;
 using MySqlConnector;
 using System;
 using System.Data;

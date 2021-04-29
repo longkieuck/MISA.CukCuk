@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MISA.Infrastructure.Model
+namespace MISA.Core.Entities
 {
     /// <summary>
     /// Endpoint filter dùng cho việc lọc các khách hàng

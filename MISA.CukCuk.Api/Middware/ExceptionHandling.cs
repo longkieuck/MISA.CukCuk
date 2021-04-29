@@ -66,8 +66,11 @@ namespace MISA.CukCuk.Api.Middware
                 context.Response.StatusCode = 500;
 
             }
+
             var result = JsonSerializer.Serialize(response);
             context.Response.ContentType = "application/json";
+
+
             return context.Response.WriteAsync(result);
         }
     }

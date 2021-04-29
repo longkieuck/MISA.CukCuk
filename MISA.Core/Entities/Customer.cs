@@ -1,9 +1,9 @@
-﻿using System;
+﻿using MISA.Core.AttributeCustom;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-namespace MISA.Infrastructure.Model
+namespace MISA.Core.Entities
 {
     /// <summary>
     /// Thông tin khách khách
@@ -19,11 +19,15 @@ namespace MISA.Infrastructure.Model
         /// <summary>
         /// Mã khách hàng
         /// </summary>
+        [MISARequired("Mã khách hàng không được phép để trống!")]
+        [MISAMaxLength(20)]
         public string CustomerCode { get; set; }
 
         /// <summary>
         /// Họ và tên
         /// </summary>
+        /// 
+        [MISARequired("Họ tên khách hàng không được phép để trống!")]
         public string FullName { get; set; }
         public DateTime DateOfBirth { get; set; }
         public int? Gender { get; set; }

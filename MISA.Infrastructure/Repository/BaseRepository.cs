@@ -1,5 +1,5 @@
 ﻿using Dapper;
-using MISA.Infrastructure.Interface;
+using MISA.Core.Interface.Repository;
 using MySqlConnector;
 using System;
 using System.Collections.Generic;
