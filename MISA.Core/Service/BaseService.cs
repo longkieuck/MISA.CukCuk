@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace MISA.Core.Service
@@ -104,6 +105,40 @@ namespace MISA.Core.Service
                         {
                             var msgError = (maxLengthProperties[0] as MISAMaxLength).MsgError;
                             throw new CustomerException(property.Name + " " + msgError);
+                        }
+
+                    }
+                    //Check format
+                    var formatProperties = property.GetCustomAttributes(typeof(MISAFormat), true);
+                    if (formatProperties.Length > 0)
+                    {
+
+                        //Lấy giá trị
+                        var propertyValue = property.GetValue(entity);
+                        var regex = (formatProperties[0] as MISAFormat).Regex;
+                        var re = new Regex(regex);
+
+                        if (!re.IsMatch(propertyValue.ToString()))
+                        {
+                            var msgError = (formatProperties[0] as MISAFormat).MsgError;
+                            throw new CustomerException(property.Name + " " + msgError);
+                        }
+
+                    }
+                    //Check Exist
+                    var existProperties = property.GetCustomAttributes(typeof(MISAExist), true);
+                    if (formatProperties.Length > 0)
+                    {
+
+                        //Lấy giá trị
+                        var propertyValue = property.GetValue(entity);
+                        if(property.Name == "PhoneNumber")
+                        {
+                            
+                        }
+                        if(property.Name == "CustomerCode")
+                        {
+
                         }
 
                     }

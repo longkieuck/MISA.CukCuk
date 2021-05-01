@@ -21,6 +21,7 @@ namespace MISA.Core.Entities
         /// </summary>
         [MISARequired("Mã khách hàng không được phép để trống!")]
         [MISAMaxLength(20)]
+        [MISAExist("Mã khách hàng đã tồn tại!")]
         public string CustomerCode { get; set; }
 
         /// <summary>
@@ -32,8 +33,14 @@ namespace MISA.Core.Entities
         public DateTime DateOfBirth { get; set; }
         public int? Gender { get; set; }
         public string MemberCardCode { get; set; }
-        public Guid? customerGroupId { get; set; }
+        public Guid? CustomerGroupId { get; set; }
+        [MISARequired("Số điện thoại không được phép để trống!")]
+        [MISAFormat(@"\(?\d{3}\)?-? *\d{3}-? *-?\d{4}")]
+        [MISAExist("Số điện thoại đã tồn tại")]
         public string PhoneNumber { get; set; }
+
+        [MISARequired("Email không được phép để trống!")]
+        [MISAFormat(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$")]
         public string Email { get; set; }
         public string CompanyName { get; set; }
         public string CompanyTaxCode { get; set; }

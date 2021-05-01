@@ -25,4 +25,25 @@ namespace MISA.Core.AttributeCustom
             MsgError = "không được dài quá " + maxLength + " kí tự";
         }
     }
+
+    public class MISAExist : Attribute
+    {
+        public string MsgError = string.Empty;
+        public MISAExist(string msgError = "")
+        {
+            MsgError = msgError;
+        }
+    }
+
+    public class MISAFormat : Attribute
+    {
+        public string MsgError = string.Empty;
+        public string Regex = string.Empty;
+        public MISAFormat( string regex = "")
+        {
+            Regex = regex;
+            MsgError = "sai định dạng!";
+        }
+    }
+    
 }

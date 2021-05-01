@@ -13,7 +13,7 @@ namespace MISA.Core.Entities
     /// CreatedBy KDLong 27/04/2021
     public class CustomerGroup
     {
-        public Guid customerGroupId { get; set; }
+        public Guid CustomerGroupId { get; set; }
         [MISARequired]
         public string CustomerGroupName { get; set; }
         public string Description { get; set; }

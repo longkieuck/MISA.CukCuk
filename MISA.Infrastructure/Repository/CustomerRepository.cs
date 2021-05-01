@@ -12,12 +12,26 @@ namespace MISA.Infrastructure.Repository
 
         public bool CheckCustomerCodeExist(string customerCode)
         {
-            return true;
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@customerCode", customerCode);
+            using (dbConnection = new MySqlConnection(connectionString))
+            {
+                var res = dbConnection.QueryFirstOrDefault<Customer>("Proc_KDLong_CheckCustomerCodeExist", param: parameters, commandType: CommandType.StoredProcedure);
+                if (res == null) return true;
+                return false;
+            }
         }
 
-        public bool CheckPhoneNumberExist(string customerCode)
+        public bool CheckPhoneNumberExist(string phoneNumber)
         {
-            return true;
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@phoneNumber", phoneNumber);
+            using (dbConnection = new MySqlConnection(connectionString))
+            {
+                var res = dbConnection.QueryFirstOrDefault<Customer>("Proc_KDLong_CheckPhoneNumberExist", param: parameters, commandType: CommandType.StoredProcedure);
+                if (res == null) return true;
+                return false;
+            }
         }
 
         /// <summary>
