@@ -1,4 +1,5 @@
 ﻿using MISA.Core.AttributeCustom;
+using MISA.Core.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,37 +19,82 @@ namespace MISA.Core.Entities
 
         /// <summary>
         /// Mã khách hàng
+        /// Là trường bắt buộc, Độ dài tối đa 20 ký tự
         /// </summary>
-        [MISARequired("Mã khách hàng không được phép để trống!")]
+        [MISARequired]
         [MISAMaxLength(20)]
-        [MISAExist("Mã khách hàng đã tồn tại!")]
         public string CustomerCode { get; set; }
 
         /// <summary>
         /// Họ và tên
+        /// Là trường bắt buộc
         /// </summary>
         /// 
-        [MISARequired("Họ tên khách hàng không được phép để trống!")]
+        [MISARequired]
         public string FullName { get; set; }
+        /// <summary>
+        /// Ngày sinh
+        /// </summary>
         public DateTime DateOfBirth { get; set; }
+        /// <summary>
+        /// Giới tính
+        /// </summary>
         public int? Gender { get; set; }
+        /// <summary>
+        /// Mã thẻ thành viên
+        /// </summary>
         public string MemberCardCode { get; set; }
+        /// <summary>
+        /// Id nhóm khách hàng
+        /// </summary>
         public Guid? CustomerGroupId { get; set; }
-        [MISARequired("Số điện thoại không được phép để trống!")]
+        /// <summary>
+        /// Số điện thoại
+        /// Là trường bắt buộc,Đúng các định dạng về số điện thoại
+        /// </summary>
+        [MISARequired]
         [MISAFormat(@"\(?\d{3}\)?-? *\d{3}-? *-?\d{4}")]
-        [MISAExist("Số điện thoại đã tồn tại")]
         public string PhoneNumber { get; set; }
+        /// <summary>
+        /// Email
+        /// Là trường bắt buộc
+        /// Đúng định dạng Email
+        /// </summary>
 
-        [MISARequired("Email không được phép để trống!")]
+        [MISARequired]
         [MISAFormat(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$")]
         public string Email { get; set; }
+        /// <summary>
+        /// Tên công ty
+        /// </summary>
         public string CompanyName { get; set; }
+        /// <summary>
+        /// Mã số thuế
+        /// </summary>
         public string CompanyTaxCode { get; set; }
+        /// <summary>
+        /// Địa chỉ
+        /// </summary>
         public string Address { get; set; }
+        /// <summary>
+        /// Ghi chú
+        /// </summary>
         public string Note { get; set; }
+        /// <summary>
+        /// Ngày tạo
+        /// </summary>
         public DateTime? CreatedDate { get; set; }
+        /// <summary>
+        /// Người tạo
+        /// </summary>
         public string CreatedBy { get; set; }
+        /// <summary>
+        /// Ngày thay đổi gần ngày hiện tại nhất
+        /// </summary>
         public DateTime ModifiedDate { get; set; }
+        /// <summary>
+        /// Người thay đổi gần nhất
+        /// </summary>
         public string ModifiedBy { get; set; }
 
     }

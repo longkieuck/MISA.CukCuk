@@ -12,6 +12,11 @@ using System.Threading.Tasks;
 
 namespace MISA.Core.Service
 {
+    /// <summary>
+    /// BaseService các service dùng chung
+    /// </summary>
+    /// <typeparam name="MISAEntity"></typeparam>
+    /// CreatedBy: KDLong 27/04/2021
     public abstract class BaseService<MISAEntity> : IBaseService<MISAEntity> where MISAEntity : class
     {
         IBaseRepository<MISAEntity> _baseRepository;
@@ -57,7 +62,7 @@ namespace MISA.Core.Service
         /// <returns>Số bản ghi thay đổi trong database</returns>
         public int Insert(MISAEntity entity)
         {
-            Validate(entity);
+            Validate(entity, true);
             return _baseRepository.Insert(entity);
         }
         /// <summary>
@@ -67,87 +72,72 @@ namespace MISA.Core.Service
         /// <returns>Số bản ghi thay đổi trong database</returns>
         public int Update(MISAEntity entity)
         {
+            Validate(entity, false);
             return _baseRepository.Update(entity);
         }
 
-        private void Validate(MISAEntity entity)
+        private void Validate(MISAEntity entity, bool isInsert)
         {
-            if (entity is Customer)
+            var properties = typeof(MISAEntity).GetProperties();
+            foreach (var property in properties)
             {
-                var properties = typeof(Customer).GetProperties();
-                foreach (var property in properties)
+                //Check trống
+                var requiredProperties = property.GetCustomAttributes(typeof(MISARequired), true);
+                if (requiredProperties.Length > 0)
                 {
-                    //Check trống
-                    var requiredProperties = property.GetCustomAttributes(typeof(MISARequired), true);
-                    if (requiredProperties.Length > 0)
+
+                    //Lấy giá trị
+                    var propertyValue = property.GetValue(entity);
+                    //Kiểm tra giá trị
+                    if (string.IsNullOrEmpty(propertyValue.ToString()))
                     {
-
-                        //Lấy giá trị
-                        var propertyValue = property.GetValue(entity);
-                        //Kiểm tra giá trị
-                        if (string.IsNullOrEmpty(propertyValue.ToString()))
-                        {
-                            var msgError = (requiredProperties[0] as MISARequired).MsgError;
-                            throw new CustomerException(msgError);
-                        }
-
-                    }
-                    //Check max length
-                    var maxLengthProperties = property.GetCustomAttributes(typeof(MISAMaxLength), true);
-                    if (maxLengthProperties.Length > 0)
-                    {
-
-                        //Lấy giá trị
-                        var propertyValue = property.GetValue(entity);
-                        var maxLength = (maxLengthProperties[0] as MISAMaxLength).MaxLength;
-                        //Kiểm tra giá trị
-                        if (propertyValue.ToString().Length > maxLength)
-                        {
-                            var msgError = (maxLengthProperties[0] as MISAMaxLength).MsgError;
-                            throw new CustomerException(property.Name + " " + msgError);
-                        }
-
-                    }
-                    //Check format
-                    var formatProperties = property.GetCustomAttributes(typeof(MISAFormat), true);
-                    if (formatProperties.Length > 0)
-                    {
-
-                        //Lấy giá trị
-                        var propertyValue = property.GetValue(entity);
-                        var regex = (formatProperties[0] as MISAFormat).Regex;
-                        var re = new Regex(regex);
-
-                        if (!re.IsMatch(propertyValue.ToString()))
-                        {
-                            var msgError = (formatProperties[0] as MISAFormat).MsgError;
-                            throw new CustomerException(property.Name + " " + msgError);
-                        }
-
-                    }
-                    //Check Exist
-                    var existProperties = property.GetCustomAttributes(typeof(MISAExist), true);
-                    if (formatProperties.Length > 0)
-                    {
-
-                        //Lấy giá trị
-                        var propertyValue = property.GetValue(entity);
-                        if(property.Name == "PhoneNumber")
-                        {
-                            
-                        }
-                        if(property.Name == "CustomerCode")
-                        {
-
-                        }
-
+                        var msgError = (requiredProperties[0] as MISARequired).MsgError;
+                        throw new CustomerException(property.Name + msgError);
                     }
 
                 }
+                //Check max length
+                var maxLengthProperties = property.GetCustomAttributes(typeof(MISAMaxLength), true);
+                if (maxLengthProperties.Length > 0)
+                {
+
+                    //Lấy giá trị
+                    var propertyValue = property.GetValue(entity);
+                    var maxLength = (maxLengthProperties[0] as MISAMaxLength).MaxLength;
+                    //Kiểm tra giá trị
+                    if (propertyValue.ToString().Length > maxLength)
+                    {
+                        var msgError = (maxLengthProperties[0] as MISAMaxLength).MsgError;
+                        throw new CustomerException(property.Name + " " + msgError);
+                    }
+
+                }
+                //Check format
+                var formatProperties = property.GetCustomAttributes(typeof(MISAFormat), true);
+                if (formatProperties.Length > 0)
+                {
+
+                    //Lấy giá trị
+                    var propertyValue = property.GetValue(entity);
+                    var regex = (formatProperties[0] as MISAFormat).Regex;
+                    var re = new Regex(regex);
+
+                    if (!re.IsMatch(propertyValue.ToString()))
+                    {
+                        var msgError = (formatProperties[0] as MISAFormat).MsgError;
+                        throw new CustomerException(property.Name + " " + msgError);
+                    }
+                }
+
             }
-            CustomValidate(entity);
+            CustomValidate(entity, isInsert);
         }
-        protected virtual void CustomValidate(MISAEntity entity)
+        /// <summary>
+        /// Đối với từng đối tượng khác nhau sẽ có những trường cần validate riêng
+        /// </summary>
+        /// <param name="entity">Đối tượng</param>
+        /// <param name="isInsert">Có phải insert hay không</param>
+        protected virtual void CustomValidate(MISAEntity entity, bool isInsert)
         {
 
         }

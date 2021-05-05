@@ -7,6 +7,11 @@ using System.Data;
 
 namespace MISA.Infrastructure.Repository
 {
+    /// <summary>
+    /// Repository dùng chung
+    /// </summary>
+    /// <typeparam name="MISAEntity"></typeparam>
+    /// CreatedBy: KDLong 27/04/2021
     public class BaseRepository<MISAEntity> : IBaseRepository<MISAEntity> where MISAEntity : class
     {
         string tableName = typeof(MISAEntity).Name;
@@ -30,7 +35,7 @@ namespace MISA.Infrastructure.Repository
             {
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add($"@{tableName}Id", entityId);
-                var rowsAffect = dbConnection.Execute($"Proc_Delete{tableName}ById", param: parameters, commandType: CommandType.StoredProcedure);
+                var rowsAffect = dbConnection.Execute($"Proc_Delete{tableName}", param: parameters, commandType: CommandType.StoredProcedure);
                 return rowsAffect;
             }
         }

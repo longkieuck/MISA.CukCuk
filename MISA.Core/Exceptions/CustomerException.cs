@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace MISA.Core.Exceptions
 {
+    /// <summary>
+    /// Customer Exception
+    /// </summary>
+    /// CreatedBy: KDLong 28/04/2021
     public class CustomerException : Exception
     {
         // ctrosc

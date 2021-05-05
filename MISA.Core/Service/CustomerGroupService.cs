@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace MISA.Core.Service
 {
+    /// <summary>
+    /// Các service riêng của CustomerGroup
+    /// </summary>
+    /// CreatedBy: KDLong 27/04/2021
     public class CustomerGroupService : BaseService<CustomerGroup>, ICustomerGroupService
     {
         ICustomerGroupRepository _customerGroupRepository;

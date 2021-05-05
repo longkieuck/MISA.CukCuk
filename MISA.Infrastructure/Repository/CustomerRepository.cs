@@ -7,30 +7,108 @@ using System.Data;
 
 namespace MISA.Infrastructure.Repository
 {
+    /// <summary>
+    /// Repository của riêng Customer
+    /// </summary>
+    /// CreatedBy: KDLong 27/04/2021
     public class CustomerRepository : BaseRepository<Customer>, ICustomerRepository
     {
-
+        /// <summary>
+        /// Check trùng mã
+        /// </summary>
+        /// <param name="customerCode"></param>
+        /// <returns>bool</returns>#
+        /// CreatedBy: KDLong 27/04/2021
         public bool CheckCustomerCodeExist(string customerCode)
         {
-            DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("@customerCode", customerCode);
+
             using (dbConnection = new MySqlConnection(connectionString))
             {
-                var res = dbConnection.QueryFirstOrDefault<Customer>("Proc_KDLong_CheckCustomerCodeExist", param: parameters, commandType: CommandType.StoredProcedure);
-                if (res == null) return true;
-                return false;
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@customerCode", customerCode);
+                var res = dbConnection.QueryFirstOrDefault<bool>("Proc_KDLong_CheckCustomerCodeExist", parameters, commandType: CommandType.StoredProcedure);
+                return res;
+            }
+        }
+        /// <summary>
+        /// Check trùng SĐT
+        /// </summary>
+        /// <param name="phoneNumber"></param>
+        /// <returns>bool</returns>
+        /// CreatedBy: KDLong 27/04/2021
+        public bool CheckPhoneNumberExist(string phoneNumber)
+        {
+            using (dbConnection = new MySqlConnection(connectionString))
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@phoneNumber", phoneNumber);
+                var res = dbConnection.QueryFirstOrDefault<bool>("Proc_KDLong_CheckPhoneNumberExist", parameters, commandType: CommandType.StoredProcedure);
+                return res;
+            }
+        }
+        /// <summary>
+        /// Check trùng Email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns>bool</returns>
+        /// CreatedBy: KDLong 27/04/2021
+        public bool CheckEmailExist(string email)
+        {
+            using (dbConnection = new MySqlConnection(connectionString))
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@email", email);
+                var res = dbConnection.QueryFirstOrDefault<bool>("Proc_KDLong_CheckEmailExist", parameters, commandType: CommandType.StoredProcedure);
+                return res;
+            }
+        }
+        /// <summary>
+        /// Lấy CustomerCode theo CustomerId
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns>CustomerCode</returns>
+        /// CreatedBy: KDLong 27/04/2021
+        public string GetCustomerCodeById(Guid customerId)
+        {
+            using (dbConnection = new MySqlConnection(connectionString))
+            {
+                DynamicParameters dynamicParameters = new DynamicParameters();
+                dynamicParameters.Add("@customerId", customerId);
+                var customer = dbConnection.QueryFirstOrDefault<Customer>("Proc_GetCustomerById", dynamicParameters, commandType: CommandType.StoredProcedure);
+                return customer.CustomerCode;
+            }
+        }
+        /// <summary>
+        /// Lấy Email theo CustomerId
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns>Email</returns>
+        /// CreatedBy: KDLong 27/04/2021
+        public string GetEmailById(Guid customerId)
+        {
+            using (dbConnection = new MySqlConnection(connectionString))
+            {
+                DynamicParameters dynamicParameters = new DynamicParameters();
+                dynamicParameters.Add("@customerId", customerId);
+                var customer = dbConnection.QueryFirstOrDefault<Customer>("Proc_GetCustomerById", dynamicParameters, commandType: CommandType.StoredProcedure);
+                return customer.Email;
             }
         }
 
-        public bool CheckPhoneNumberExist(string phoneNumber)
+        /// <summary>
+        /// Lấy PhoneNumber theo CustomerId
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns>PhoneNumber</returns>
+        /// CreatedBy: KDLong 27/04/2021
+        public string GetPhoneNumberById(Guid customerId)
         {
-            DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("@phoneNumber", phoneNumber);
             using (dbConnection = new MySqlConnection(connectionString))
             {
-                var res = dbConnection.QueryFirstOrDefault<Customer>("Proc_KDLong_CheckPhoneNumberExist", param: parameters, commandType: CommandType.StoredProcedure);
-                if (res == null) return true;
-                return false;
+                DynamicParameters dynamicParameters = new DynamicParameters();
+                dynamicParameters.Add("@customerId", customerId);
+                var customer = dbConnection.QueryFirstOrDefault<Customer>("Proc_GetCustomerById", dynamicParameters, commandType: CommandType.StoredProcedure);
+                return customer.PhoneNumber;
             }
         }
 

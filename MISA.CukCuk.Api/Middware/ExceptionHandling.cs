@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using MISA.Core.Enum;
 using MISA.Core.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -9,10 +10,18 @@ using System.Threading.Tasks;
 
 namespace MISA.CukCuk.Api.Middware
 {
+    /// <summary>
+    /// Middleware phục vụ bắt Exception
+    /// </summary>
+    /// CreatedBy: KDLong 27/04/2021
+
     public class ErrorHandlingMiddleware
     {
         private readonly RequestDelegate _next;
-
+        /// <summary>
+        /// Khởi tạo
+        /// </summary>
+        /// <param name="next"></param>
         public ErrorHandlingMiddleware(RequestDelegate next)
         {
             _next = next;
@@ -29,7 +38,12 @@ namespace MISA.CukCuk.Api.Middware
                 await HandleExceptionAsync(context, ex);
             }
         }
-
+        /// <summary>
+        /// Sử lý Exception
+        /// </summary>
+        /// <param name="context">Bối cảnh hiện tại</param>
+        /// <param name="exception"></param>
+        /// <returns>Message cho các exception</returns>
         private static Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
             //HttpStatusCode status;
@@ -37,7 +51,7 @@ namespace MISA.CukCuk.Api.Middware
             var response = new
             {
                 devMsg = exception.Message,
-                userMsg = "Có lỗi xảy ra vui lòng liên hệ MISA",
+                userMsg = MISAConstant.User_Msg_Error,
                 MISACode = "002",
                 Data = exception.Data
             };
@@ -48,7 +62,7 @@ namespace MISA.CukCuk.Api.Middware
                 response = new
                 {
                     devMsg = exception.Message,
-                    userMsg = "Có lỗi xảy ra vui lòng liên hệ MISA",
+                    userMsg = MISAConstant.User_Msg_Error,
                     MISACode = "001",
                     Data = exception.Data
                 };
@@ -59,7 +73,7 @@ namespace MISA.CukCuk.Api.Middware
                 response = new
                 {
                     devMsg = exception.Message,
-                    userMsg = "Có lỗi xảy ra vui lòng liên hệ MISA",
+                    userMsg = MISAConstant.User_Msg_Error,
                     MISACode = "002",
                     Data = exception.Data
                 };

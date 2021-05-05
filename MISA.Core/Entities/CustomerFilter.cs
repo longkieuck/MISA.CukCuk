@@ -9,6 +9,7 @@ namespace MISA.Core.Entities
     /// <summary>
     /// Endpoint filter dùng cho việc lọc các khách hàng
     /// </summary>
+    /// CreatedBy: KDLong 28/04/2021
     public class CustomerFilter
     {
         /// <summary>
