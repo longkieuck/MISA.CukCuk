@@ -18,7 +18,7 @@ namespace MISA.Infrastructure.Repository
         protected string connectionString = "" +
            "Host = 47.241.69.179;" +
            "Port = 3306;" +
-           "Database = MF0_NVManh_CukCuk02;" +
+           "Database = TEST.MISA.AMIS;" +
            "User Id= dev;" +
            "Password = 12345678;";
         protected IDbConnection dbConnection;

@@ -1,7 +1,10 @@
-﻿using MISA.Core.Entities;
+﻿using Dapper;
+using MISA.Core.Entities;
 using MISA.Core.Interface.Repository;
+using MySqlConnector;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +25,13 @@ namespace MISA.Infrastructure.Repository
         /// CreatedBy KDLong 07/05/2021
         public bool CheckEmployeeCodeExist(string employeeCode)
         {
-            throw new NotImplementedException();
+            using (dbConnection = new MySqlConnection(connectionString))
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@EmployeeCode", employeeCode);
+                var res = dbConnection.QueryFirstOrDefault<bool>($"Proc_CheckEmployeeCodeExist", param: parameters, commandType: CommandType.StoredProcedure);
+                return res;
+            }
         }
         /// <summary>
         /// Lấy mã nhân viên mới nhất trong hệ thống
@@ -31,7 +40,11 @@ namespace MISA.Infrastructure.Repository
         /// CreatedBy KDLong 07/05/2021
         public string GetMaxEmployeeCode()
         {
-            throw new NotImplementedException();
+            using (dbConnection = new MySqlConnection(connectionString))
+            {
+                var res = dbConnection.QueryFirstOrDefault($"GetMaxEmployeeCode", commandType: CommandType.StoredProcedure);
+                return res;
+            }
         }
     }
 }
