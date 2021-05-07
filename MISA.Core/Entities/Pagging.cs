@@ -10,7 +10,7 @@ namespace MISA.Core.Entities
     /// Dữ liệu phân trang
     /// </summary>
     /// Created by KDLong 28/04/2021
-    public class Pagging<T>
+    public class Pagging<MISAEntity>
     {
         /// <summary>
         /// Tổng số bản ghi
@@ -23,7 +23,7 @@ namespace MISA.Core.Entities
         /// <summary>
         /// Dữ liệu
         /// </summary>
-        public IEnumerable<T> Data { get; set; }
+        public IEnumerable<MISAEntity> Data { get; set; }
         /// <summary>
         /// Trang hiện tại
         /// </summary>
