@@ -115,6 +115,42 @@ namespace MISA.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nữ.
+        /// </summary>
+        internal static string Gender_Female {
+            get {
+                return ResourceManager.GetString("Gender_Female", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nam.
+        /// </summary>
+        internal static string Gender_Male {
+            get {
+                return ResourceManager.GetString("Gender_Male", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Không xác định.
+        /// </summary>
+        internal static string Gender_Null {
+            get {
+                return ResourceManager.GetString("Gender_Null", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Khác.
+        /// </summary>
+        internal static string Gender_Other {
+            get {
+                return ResourceManager.GetString("Gender_Other", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sửa thất bại!.
         /// </summary>
         internal static string Update_Fail {

@@ -10,14 +10,10 @@ namespace MISA.Core.Exceptions
     /// Customer Exception
     /// </summary>
     /// CreatedBy: KDLong 28/04/2021
-    public class CustomerException : Exception
+    public class BaseException : Exception
     {
         // ctrosc
-        public CustomerException(string msg) : base(msg)
-        {
-
-        }
-        public CustomerException(string msg, string customerCode) : base(msg)
+        public BaseException(string msg) : base(msg)
         {
 
         }

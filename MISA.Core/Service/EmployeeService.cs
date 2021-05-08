@@ -1,4 +1,6 @@
 ﻿using MISA.Core.Entities;
+using MISA.Core.Enum;
+using MISA.Core.Exceptions;
 using MISA.Core.Interface.Repository;
 using MISA.Core.Interface.Service;
 using System;
@@ -34,7 +36,41 @@ namespace MISA.Core.Service
         /// CreatedBy KDLong 07/05/2021
         public Pagging<Employee> GetEmployees(EmployeeFilter employeeFilter)
         {
-            throw new NotImplementedException();
+            var pagging = _employeeRepository.GetEmployees(employeeFilter);
+            return pagging;
+        }
+        /// <summary>
+        /// Lấy mã nhân viên lớn nhất trong db để tạo ra mã nhân viên mới
+        /// </summary>
+        /// <returns>Mã nhân viên mới</returns>
+        /// CreatedBy KDLong 08/05/2021
+        public string GetNewEmployeeCode()
+        {
+            var maxEmployeeCode = _employeeRepository.GetMaxEmployeeCode();
+            if (maxEmployeeCode == null)
+            {
+                return "NV-0001";
+            }
+            var res = maxEmployeeCode.Substring(0, 3);
+
+            var numStr = maxEmployeeCode.Substring(3);
+
+            var numInt = Int32.Parse(numStr) + 1;
+            var numNew = Convert.ToString(numInt);
+            var lengthNumNew = numNew.Length;
+            for (int i = 0; i < 4 - lengthNumNew; i++)
+            {
+                numNew = "0" + numNew;
+            }
+            res = res + numNew;
+
+            return res;
+        }
+
+        protected override void CustomValidate(Employee entity)
+        {
+            var isEmployeeCodeExist = _employeeRepository.CheckEmployeeCodeExist(entity.EmployeeCode);
+            if(isEmployeeCodeExist) throw new BaseException("EmployeeCode" + MISAConstant.Dev_Msg_Exist);
         }
     }
 }

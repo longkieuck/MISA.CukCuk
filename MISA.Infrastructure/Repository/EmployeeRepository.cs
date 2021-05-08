@@ -33,6 +33,7 @@ namespace MISA.Infrastructure.Repository
                 return res;
             }
         }
+
         /// <summary>
         /// Lấy mã nhân viên mới nhất trong hệ thống
         /// </summary>
@@ -42,8 +43,44 @@ namespace MISA.Infrastructure.Repository
         {
             using (dbConnection = new MySqlConnection(connectionString))
             {
-                var res = dbConnection.QueryFirstOrDefault($"GetMaxEmployeeCode", commandType: CommandType.StoredProcedure);
+                var res = dbConnection.QueryFirstOrDefault<string>($"Proc_GetMaxEmployeeCode", commandType: CommandType.StoredProcedure);
                 return res;
+            }
+        }
+
+        /// <summary>
+        /// Lấy nhanh sách nhân viên theo điều kiện
+        /// </summary>
+        /// <param name="employeeFilter">
+        /// Page
+        /// PageSize
+        /// Search
+        /// </param>
+        /// <returns>Danh sách nv</returns>
+        /// CreatedBy KDLong 07/05/2021
+        public Pagging<Employee> GetEmployees(EmployeeFilter employeeFilter)
+        {
+            using (dbConnection = new MySqlConnection(connectionString))
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@Search", employeeFilter.Search);
+
+                var totalRecords = dbConnection.QueryFirstOrDefault<int>("Proc_GetTotalEmployees", param: parameters, commandType: CommandType.StoredProcedure);
+
+                var totalPages = Math.Ceiling((decimal)totalRecords / employeeFilter.PageSize);
+
+                var employees = dbConnection.Query<Employee>("Proc_GetEmployeesFilter", param: employeeFilter, commandType: CommandType.StoredProcedure);
+
+                // Dữ liệu pagging 
+                var paging = new Pagging<Employee>()
+                {
+                    TotalRecords = totalRecords,
+                    TotalPages = (int)totalPages,
+                    Data = employees,
+                    PageIndex = employeeFilter.Page,
+                    PageSize = employeeFilter.PageSize
+                };
+                return paging;
             }
         }
     }

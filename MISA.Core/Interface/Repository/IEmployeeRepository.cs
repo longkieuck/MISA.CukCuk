@@ -25,5 +25,16 @@ namespace MISA.Core.Interface.Repository
         /// <returns></returns>
         /// CreatedBy KDLong 07/05/2021
         string GetMaxEmployeeCode();
+        /// <summary>
+        /// Lấy nhanh sách nhân viên theo điều kiện
+        /// </summary>
+        /// <param name="employeeFilter">
+        /// Page
+        /// PageSize
+        /// Search
+        /// </param>
+        /// <returns>Danh sách nv</returns>
+        /// CreatedBy KDLong 07/05/2021
+        public Pagging<Employee> GetEmployees(EmployeeFilter employeeFilter);
     }
 }

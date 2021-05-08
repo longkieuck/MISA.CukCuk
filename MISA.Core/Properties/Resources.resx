@@ -135,6 +135,18 @@
   <data name="Dev_Msg_Require" xml:space="preserve">
     <value> không được phép để trống!</value>
   </data>
+  <data name="Gender_Female" xml:space="preserve">
+    <value>Nữ</value>
+  </data>
+  <data name="Gender_Male" xml:space="preserve">
+    <value>Nam</value>
+  </data>
+  <data name="Gender_Null" xml:space="preserve">
+    <value>Không xác định</value>
+  </data>
+  <data name="Gender_Other" xml:space="preserve">
+    <value>Khác</value>
+  </data>
   <data name="Update_Fail" xml:space="preserve">
     <value>Sửa thất bại!</value>
   </data>

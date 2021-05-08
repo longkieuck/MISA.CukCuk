@@ -58,5 +58,28 @@ namespace MISA.Core.Enum
         /// </summary>
         /// CreatedBy: KDLong 05/05/2021
         public static string Delete_Fail = Properties.Resources.Delete_Fail;
+        /// <summary>
+        /// Nam
+        /// </summary>
+        /// CreatedBy: KDLong 08/05/2021
+        public static string Gender_Male = Properties.Resources.Gender_Male;
+
+        /// <summary>
+        /// Nữ
+        /// </summary>
+        /// CreatedBy: KDLong 08/05/2021
+        public static string Gender_Female = Properties.Resources.Gender_Female;
+
+        /// <summary>
+        /// Khác
+        /// </summary>
+        /// CreatedBy: KDLong 08/05/2021
+        public static string Gender_Other = Properties.Resources.Gender_Other;
+
+        /// <summary>
+        /// Không xác định
+        /// </summary>
+        /// CreatedBy: KDLong 08/05/2021
+        public static string Gender_Null = Properties.Resources.Gender_Null;
     }
 }

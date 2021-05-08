@@ -137,7 +137,7 @@ namespace MISA.Infrastructure.Repository
 
                 var totalPages = Math.Ceiling((decimal)totalRecords / customerFilter.PageSize);
 
-                var customers = dbConnection.Query<Customer>("Proc_KDLong_GetCustomers", customerFilter, commandType: CommandType.StoredProcedure);
+                var customers = dbConnection.Query<Customer>("Proc_KDLong_GetEmployees", param: customerFilter, commandType: CommandType.StoredProcedure);
 
                 // Dữ liệu pagging 
                 var paging = new Pagging<Customer>()

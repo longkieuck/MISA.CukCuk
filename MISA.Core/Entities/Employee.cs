@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MISA.Core.AttributeCustom;
+using MISA.Core.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,10 +17,13 @@ namespace MISA.Core.Entities
         /// <summary>
         /// Id nhân viên
         /// </summary>
-        public string EmployeeId { get; set; }
+        public Guid EmployeeId { get; set; }
+
         /// <summary>
         /// Mã nhân viên
         /// </summary>
+        [MISARequired]
+        [MISAMaxLength(20)]
         public string EmployeeCode { get; set; }
         /// <summary>
         /// Giới tính
@@ -35,13 +40,13 @@ namespace MISA.Core.Entities
                 switch (Gender)
                 {
                     case 0:
-                        return "Nam";
+                        return MISAConstant.Gender_Male;
                     case 1:
-                        return "Nữ";
+                        return MISAConstant.Gender_Female;
                     case 2:
-                        return "Khác";
+                        return MISAConstant.Gender_Other;
                     default:
-                        return "Không xác định";
+                        return MISAConstant.Gender_Null;
                 }
             }
         }
@@ -56,6 +61,7 @@ namespace MISA.Core.Entities
         /// <summary>
         /// Vị trí
         /// </summary>
+        [MISARequired]
         public string PositionName { get; set; }
         /// <summary>
         /// Đơn vị  
@@ -76,6 +82,7 @@ namespace MISA.Core.Entities
         /// <summary>
         /// Họ và tên
         /// </summary>
+        [MISARequired]
         public string FullName { get; set; }
         /// <summary>
         /// Ngày cấp CMT

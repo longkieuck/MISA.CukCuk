@@ -15,7 +15,7 @@ namespace MISA.Core.Entities
         /// <summary>
         /// Id đơn vị
         /// </summary>
-        public string DepartmentId { get; set; }
+        public Guid DepartmentId { get; set; }
         /// <summary>
         /// Tên đơn vị
         /// </summary>

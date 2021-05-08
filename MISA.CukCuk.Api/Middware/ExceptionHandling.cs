@@ -56,8 +56,8 @@ namespace MISA.CukCuk.Api.Middware
                 Data = exception.Data
             };
 
-            // throw new CustomerException
-            if (exception is CustomerException)
+            // throw new BaseException
+            if (exception is BaseException)
             {
                 response = new
                 {

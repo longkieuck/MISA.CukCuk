@@ -14,6 +14,13 @@ namespace MISA.Core.Interface.Service
     public interface IEmployeeService : IBaseService<Employee>
     {
         /// <summary>
+        /// Tạo ra mã nhân viên mới
+        /// </summary>
+        /// <returns></returns>
+        /// CreatedBy KDLong 07/05/2021
+        public string GetNewEmployeeCode();
+
+        /// <summary>
         /// Lấy danh sách nhân viên theo các tiêu chí
         /// </summary>
         /// <param name="employeeFilter">
