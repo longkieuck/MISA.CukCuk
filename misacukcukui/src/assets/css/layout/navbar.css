@@ -1,0 +1,128 @@
+#navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 178px;
+    height: 100vh;
+    background-color: rgb(56, 57, 61);
+}
+
+
+/* logo */
+
+.logo-box {
+    height: 48px;
+    display: flex;
+    align-items: center;
+}
+
+.toggle {
+    margin-left: 24px;
+    background-image: url('../../img/Sprites.64af8f61.svg');
+    height: 24px;
+    width: 24px;
+    background-repeat: no-repeat;
+    background-position: -424px -86px;
+    margin-right: 10px;
+}
+
+.logo {
+    width: 96px;
+    height: 32px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('../../img/Logo_Module_TiengViet_White.66947422.svg');
+}
+
+
+/* menu */
+
+.menu {
+    margin-top: 14px;
+}
+
+.menu-item {
+    align-items: center;
+    height: 42px;
+    width: 100%;
+    display: flex;
+}
+
+.menu-item:hover {
+    background-color: #616164;
+    cursor: pointer;
+}
+
+.menu-item-logo {
+    margin-left: 14px;
+    background-image: url('../../img/Sprites.64af8f61.svg');
+    height: 24px;
+    width: 24px;
+    background-repeat: no-repeat;
+    margin-right: 8px;
+}
+
+.menu-item-title {
+    color: white;
+    font-size: 14px;
+}
+
+.dashboard {
+    background-position: -30px -1628px;
+}
+
+.cash {
+    background-position: -73px -1628px;
+}
+
+.bank {
+    background-position: -117px -1628px;
+}
+
+.pu {
+    background-position: -161px -1628px;
+}
+
+.sale {
+    background-position: -204px -1628px;
+}
+
+.invoice {
+    background-position: -249px -1628px;
+}
+
+.stock {
+    background-position: -291px -1628px;
+}
+
+.tools {
+    background-position: -336px -1628px;
+}
+
+.assets {
+    background-position: -378px -1630px;
+}
+
+.tax {
+    background-position: -423px -1630px;
+}
+
+.price {
+    background-position: -467px -1628px;
+}
+
+.general {
+    background-position: -510px -1628px;
+}
+
+.budget {
+    background-position: -378px -1659px;
+}
+
+.report {
+    background-position: -547px -1628px;
+}
+
+.finance {
+    background-position: -204px -1664px;
+}
