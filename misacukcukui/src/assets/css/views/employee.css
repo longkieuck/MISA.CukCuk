@@ -1,0 +1,104 @@
+.container{
+    height: calc(100vh - 78px);
+    margin: 20px 10px 10px 10px;
+    /* background-color: forestgreen; */
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.header-name{
+    font-weight: 600;
+    font-size: 24px;
+    color: #111;
+}
+.btn-add{
+    border-radius: 4px;
+    width: 150px;
+    font-size: 13px;
+    text-align: center;
+    line-height: 30px;
+    align-items: center;
+    height: 30px;
+    color: white;
+    background-color: #2CA01C;
+    cursor: pointer;
+}
+.content{
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    top: 70px;
+    bottom: 10px;
+    background-color: white;
+}
+.top-content{
+    /* background-color: red; */
+    position: absolute;
+    right: 20px;
+    top:10px;
+    display: flex;
+    line-height: 32px;
+    align-items: center;
+}
+.input-search{
+    width: 240px;
+}
+
+.input{
+    font-size: 13px;
+    padding: 6px 10px;
+    padding-right: 30px;
+    outline: none;
+    height: 32px;
+    width: 240px;
+    box-sizing: border-box;
+    border: 1px solid #babec5;
+}
+.input:focus{
+    border: 1px solid #2CA01C;
+}
+.input::placeholder{
+    font-style: italic;
+    color: #c4c4c4;
+}
+.icon-search{
+    background-image: url('../../img/Sprites.64af8f61.svg');
+    background-position: -992px -360px;
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    position: absolute;
+    top:8px;
+    right: 75px;
+}
+.refresh{
+    background-image: url('../../img/Sprites.64af8f61.svg');
+    background-position: -423px -201px;
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+    cursor: pointer;
+}
+.export{
+    margin-left: 10px;
+    margin-right: 10px;
+    background-image: url('../../img/Sprites.64af8f61.svg');
+    background-position: -704px -200px;
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+    cursor: pointer;
+}
+.grid-data{
+    position: absolute;
+    background-color: green;
+    left: 10px;
+    right: 25px;
+    bottom: 0px;
+    top: 60px;
+}
