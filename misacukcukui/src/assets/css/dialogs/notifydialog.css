@@ -1,20 +1,64 @@
-.dialog{
+.dialog-box {
     position: fixed;
     background-color: #000;
-    opacity: 0.4;
+    opacity: 0.3;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 1001;
 }
-.dialog-model{
-    z-index: 1002;
+
+.dialog-notify-content {
+    border-radius: 4px;
+    text-align: left;
+    padding: 50px 30px 30px 30px;
     position: fixed;
-    background-color: red;
-    height: 184px;
+    background-color: white;
+    height: 164px;
     width: 444px;
-    top: calc(50% - 92px);
+    top: calc(50% - 82px);
     left: calc(50% - 222px);
-    opacity: 1 !important;
+}
+
+.content-box {
+    display: flex;
+}
+
+.notify-icon {
+    height: 48px;
+    width: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    background-image: url('../../img/Sprites.64af8f61.svg');
+    margin-right: 20px;
+    margin: -8px 20px 28px 0px;
+    background-repeat: no-repeat;
+    background-position: -592px -456px;
+}
+
+.content-text {
+    color: #111;
+    font-size: 15px;
+}
+
+.line {
+    margin-top: 25px;
+    width: 100%;
+    border-top: 2px solid #c4c4c4;
+}
+
+.dialog-notify-content .btn-accept {
+    margin-top: 30px;
+    border-radius: 4px;
+    width: 90px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 40px;
+    align-items: center;
+    height: 40px;
+    color: white;
+    background-color: #2CA01C;
+    cursor: pointer;
+    font-weight: 600;
+    margin-left: 80%;
 }

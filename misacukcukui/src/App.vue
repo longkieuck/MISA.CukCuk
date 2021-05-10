@@ -27,6 +27,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+input:focus{
+  border: 1px solid #2CA01C;
+}
+input::placeholder {
+    font-style: italic;
+    color: #c4c4c4;
 }
 </style>

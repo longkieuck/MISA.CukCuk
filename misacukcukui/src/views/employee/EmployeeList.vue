@@ -18,17 +18,17 @@
             </div>
         </div>
         <!-- <InfoDialog/> -->
-        <NotifyDialog/>
+        <!-- <NotifyDialog/> -->
     </div>
 </template>
 
 <script>
-    import NotifyDialog from '../../components/dialogs/NotifyDialog.vue'
+    // import NotifyDialog from '../../components/dialogs/NotifyDialog.vue'
     // import InfoDialog from '../../components/dialogs/InfoDialog.vue'
     export default {
         components:{
             // InfoDialog,
-            NotifyDialog
+            // NotifyDialog
         }
     }
 
