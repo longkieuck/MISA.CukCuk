@@ -98,9 +98,10 @@
 
 .grid-data {
     position: absolute;
-    background-color: green;
+    /* background-color: green; */
     left: 10px;
     right: 25px;
-    bottom: 0px;
+    overflow: scroll;
     top: 60px;
+    height: calc(100vh - 230px);
 }
