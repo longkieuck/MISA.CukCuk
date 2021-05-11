@@ -1,4 +1,4 @@
-.dialog-box {
+.dialog-box-notify {
     position: fixed;
     background-color: #000;
     opacity: 0.3;
@@ -6,6 +6,7 @@
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 99;
 }
 
 .dialog-notify-content {
@@ -64,6 +65,7 @@
     font-weight: 600;
     margin-left: 66%;
 }
+
 .dialog-notify-content .btn-cancel {
     position: absolute;
     margin-top: 10px;
@@ -79,5 +81,4 @@
     cursor: pointer;
     font-weight: 600;
     margin-left: 40%;
-
 }

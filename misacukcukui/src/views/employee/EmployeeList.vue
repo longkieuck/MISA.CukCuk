@@ -9,6 +9,7 @@
         <div class="top-content">
           <div class="input-search">
             <input
+              @keyup="handleChageSearch"
               placeholder="Tìm theo mã, tên nhân viên"
               type="text"
               class="input"
@@ -60,7 +61,6 @@
                 <td>{{ e.bankName }}</td>
                 <td>{{ e.bankBranch }}</td>
                 <td class="action">
-                    
                   <div class="edit-text" @click="showDialogForEdit(e)">Sửa</div>
                   <a-dropdown :trigger="['click']">
                     <a>
@@ -70,7 +70,7 @@
                       <a-menu-item key="0">
                         <a>Nhân bản</a>
                       </a-menu-item>
-                      <a-menu-item @click="btnDelete(e.employeeId)" key="1">
+                      <a-menu-item @click="showDialogConfirmDelete(e)" key="1">
                         <a>Xóa</a>
                       </a-menu-item>
                       <a-menu-item key="2">
@@ -83,16 +83,49 @@
             </tbody>
           </table>
         </div>
+        <div class="pagging">
+          <div class="total-record">Tổng số: <b>{{totalRecords}}</b> bản ghi</div>
+          <div class="right-pagging">
+            <div class="select-record-number">
+              <a-select default-value="10" style="width: 200px;" @change="handleChangePageSize">
+                <a-select-option value="10">
+                  10 bản ghi trên 1 trang
+                </a-select-option>
+                <a-select-option value="20">
+                  20 bản ghi trên 1 trang
+                </a-select-option>
+                <a-select-option value="30" >
+                  30 bản ghi trên 1 trang
+                </a-select-option>
+                <a-select-option value="50">
+                  50 bản ghi trên 1 trang
+                </a-select-option>
+                <a-select-option value="100">
+                  100 bản ghi trên 1 trang
+                </a-select-option>
+              </a-select>
+            </div>
+            <div class="select-page">
+              <a-pagination
+                showLessItems="true" 
+                @change="onChangePage" 
+                :total="totalRecords" 
+                :pageSize="pageSize" 
+                :item-render="itemRender"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <InfoDialog v-show="isShow" />
-    <NotifyDialog v-show="true"/>
+    <NotifyDialog v-show="isShowNotifyDialog"/>
   </div>
 </template>
 
 <script>
 import moment from "moment";
-
+import _ from 'lodash'
 import { mapActions, mapState } from "vuex";
 import NotifyDialog from '../../components/dialogs/NotifyDialog.vue'
 import InfoDialog from "../../components/dialogs/InfoDialog.vue";
@@ -109,8 +142,13 @@ export default {
       isEdit: (state) => state.isEdit,
       isAdd: (state) => state.isAdd,
       isShow: (state) => state.isShow,
-      isShowNotifyDelete:(state)=>state.isShowNotifyDelete,
+      isShowNotifyDialog:(state)=>state.isShowNotifyDialog,
       employees: (state) => state.employees,
+      totalRecords: (state) => state.totalRecords,
+      totalPages: (state) => state.totalPages,
+      pageIndex: (state) => state.pageIndex,
+      pageSize: (state) => state.pageSize,
+      search: (state) => state.search,
     }),
   },
   methods: {
@@ -120,7 +158,11 @@ export default {
       "showDialogForAdd",
       "showDialogForEdit",
       "getNewEmployeeCode",
-      "deleteEmployee"
+      "deleteEmployee",
+      "showDialogConfirmDelete",
+      "changePageSize",
+      "changeSearchText",
+      "changePage"
     ]),
     loadData() {
       this.loadEmployee();
@@ -130,11 +172,28 @@ export default {
       this.showDialogForAdd();
       this.getNewEmployeeCode();
     },
-    btnDelete(employeeId){
-        this.deleteEmployee({employeeId,callback:()=>{
-            this.loadEmployee();
-        }})
+    handleChangePageSize(value){
+      this.changePage(1)
+      this.changePageSize(value)
+      this.loadEmployee();
+    },
+    handleChageSearch:_.debounce(function(e){
+      this.changeSearchText(e.target.value)
+      this.loadEmployee();
+    },500),
+    itemRender(current, type, originalElement) {
+      if (type === 'prev') {
+        return <a>Trước</a>;
+      } else if (type === 'next') {
+        return <a>Sau</a>;
+      }
+      return originalElement;
+    },
+    onChangePage(page){
+      this.changePage(page)
+      this.loadEmployee();
     }
+    
   },
   mounted: function() {},
   filters: {

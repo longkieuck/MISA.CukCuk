@@ -54,7 +54,9 @@ th:last-child {
     height: 32px;
     background: #ECEEF1;
 }
+
 td:first-child {
+    border-bottom: 1px solid #e5e5e5;
     display: flex;
     border-right: none;
     position: sticky;
@@ -73,31 +75,32 @@ th:first-child {
     background: #ECEEF1;
     border-right: 1px dashed #c7c7c7;
 }
-.action {
-    /* border-left: 1px dashed #c7c7c7; */
-    /* position: absolute; */
-}
 
 tbody tr:hover {
     cursor: pointer;
     background-color: #f7f7f7;
 }
-.border-checkbox-th{
+
+.border-checkbox-th {
     width: 10px;
     height: 32px;
     /* background-color: red; */
 }
-.border-checkbox-td{
+
+.border-checkbox-td {
     width: 10px;
     height: 48px;
     /* background-color: red; */
 }
-.action{
+
+.action {
     justify-content: center;
 }
-a-menu-item:hover{
-    color:greenyellow
+
+a-menu-item:hover {
+    color: greenyellow
 }
-.edit-text{
+
+.edit-text {
     color: #349DFF;
 }

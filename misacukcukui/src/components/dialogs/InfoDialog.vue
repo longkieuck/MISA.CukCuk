@@ -221,13 +221,28 @@ export default {
     },
   },
   methods: {
-    ...mapActions(["closeDialogInfo", "editOrAdd","loadEmployee","closeDialogInfo"]),
+    ...mapActions(["closeDialogInfo", "editOrAdd","loadEmployee","closeDialogInfo","showDialogNotify"]),
     btnEditOrAdd(){
-    this.editOrAdd(()=>{
-        this.loadEmployee()
-        this.closeDialogInfo()
-    })     
+    let isAdd = this.isAdd
+    this.editOrAdd({callbackSuccess:()=>{
+      this.openNotificationWithIcon(isAdd)
+      this.loadEmployee()
+      this.closeDialogInfo()
+      
+    },callbackFail:()=>{
+      let employeeCode = this.newEmployeeCode
+      this.showDialogNotify(employeeCode)
     }
+    })     
+    },
+    openNotificationWithIcon(isAdd) {
+      this.$notification['success']({
+        message: 'Thành công!',
+        description:
+          isAdd?'Thêm thành công!':'Sửa thành công!',
+        duration:2
+      });
+    },
   },
 };
 </script>
