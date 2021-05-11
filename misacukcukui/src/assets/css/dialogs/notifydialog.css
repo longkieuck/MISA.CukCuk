@@ -9,14 +9,15 @@
 }
 
 .dialog-notify-content {
+    z-index: 100;
     border-radius: 4px;
     text-align: left;
     padding: 50px 30px 30px 30px;
     position: fixed;
     background-color: white;
-    height: 164px;
+    height: 200px;
     width: 444px;
-    top: calc(50% - 82px);
+    top: calc(50% - 100px);
     left: calc(50% - 222px);
 }
 
@@ -42,13 +43,14 @@
 }
 
 .line {
-    margin-top: 25px;
+    margin-top: 15px;
     width: 100%;
     border-top: 2px solid #c4c4c4;
 }
 
 .dialog-notify-content .btn-accept {
-    margin-top: 30px;
+    position: absolute;
+    margin-top: 10px;
     border-radius: 4px;
     width: 90px;
     font-size: 14px;
@@ -60,5 +62,22 @@
     background-color: #2CA01C;
     cursor: pointer;
     font-weight: 600;
-    margin-left: 80%;
+    margin-left: 66%;
+}
+.dialog-notify-content .btn-cancel {
+    position: absolute;
+    margin-top: 10px;
+    border-radius: 4px;
+    width: 90px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 40px;
+    align-items: center;
+    height: 40px;
+    color: #111;
+    background-color: #e5e5e5;
+    cursor: pointer;
+    font-weight: 600;
+    margin-left: 40%;
+
 }

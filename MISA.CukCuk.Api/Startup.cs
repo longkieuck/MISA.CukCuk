@@ -66,7 +66,11 @@ namespace MISA.CukCuk.Api
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true) // allow any origin
+                .AllowCredentials()); // allow credentials
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

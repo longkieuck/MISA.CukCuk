@@ -53,7 +53,7 @@ namespace MISA.Core.Entities
         /// <summary>
         /// Ngày sinh
         /// </summary>
-        public DateTime DateOfbirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
         /// <summary>
         /// Số CMT
         /// </summary>
@@ -87,7 +87,7 @@ namespace MISA.Core.Entities
         /// <summary>
         /// Ngày cấp CMT
         /// </summary>
-        public DateTime IdentifyDate { get; set; }
+        public DateTime? IdentifyDate { get; set; }
         /// <summary>
         /// Nơi cấp
         /// </summary>
